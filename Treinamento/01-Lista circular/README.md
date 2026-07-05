@@ -1,0 +1,1 @@
+# Exercícios para treinamento usando variantes de uma lista circular duplamente encadeada com nó cabeça
