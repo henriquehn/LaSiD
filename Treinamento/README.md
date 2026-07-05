@@ -9,7 +9,7 @@ Para os projetos de treinamento, serão utilizados:
 - [Git](https://git-scm.com/)
 - Como linguagem padrão, utilizaremos o C#
 
-O Visual Studio é o sugerido como preferencial, mas o tutorando pode utilizar o IDE de sua preferência.
+O Visual Studio Community é o sugerido como preferencial, mas o tutorando pode utilizar o IDE de sua preferência.
 
 Para efeito conveniência e diferenciação, chamaremos o Visual Studio Community de **Visual Studio Clásico** ou **VS Clássico**. A mesma nomenclatura também se aplica a outras variantes como Visual Studio Professional ou Visual Studio Enterprise. Eles compartilham um conjunto de funcionalidades e ferramentas que não estão presentes no Visual Studio Code, por isso, serão chamados de forma distinta.
 
