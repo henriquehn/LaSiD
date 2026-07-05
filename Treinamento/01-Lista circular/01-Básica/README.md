@@ -1,6 +1,8 @@
 # 1. Atividade 1:
 ## 1.1. Lista duplamente encadeada circular com nó cabeça
 
+Este exercício tem o propósito de ser uma introdução para os fundamentos da linguagem C#
+
 Uma lista simplesmente encadeada é aquela em que cada nó da lista é uma estrutura composta, que armazena o valor e aponta para o elemento seguinte.
 
 Em uma lista duplamente encadeada, cada nó também aponta para o elemento anterior da lista.
