@@ -1,63 +1,61 @@
-namespace list
+namespace List
 {
-    public class CircularList
+    public partial class CircularList
     {
         //criar classe lista com head, tail e o ultimo(variavel temporaria para troca)
         private Node? head;
-        Node tails = head.previous; //o tail recebe o anterior do head
-        public int Count = 0;
+        public int Count { get; private set; } = 0;
         public CircularList()
         {
-            head = new Node(null);
-            head.previous = head;
-            head.next = head;
+            head = new Node();
         }
         public void Add(object obj)
         {
             if (obj != null)
             {
+                Node? tails = head!.Previous; //o tail recebe o anterior do head
                 Node nNo = new Node(obj);
-                tails!.next = nNo; //o proximo do tail recebe o novo no
-                nNo.previous = tails; //o anterior do novo no recebe o tail
-                nNo.next = head; //o proximo do novo no recebe o head
-                head.previous = nNo; //o anterior do head recebe o novo no
+                tails!.Next = nNo; //o proximo do tail recebe o novo no
+                nNo.Previous = tails; //o anterior do novo no recebe o tail
+                nNo.Next = head; //o proximo do novo no recebe o head
+                head.Previous = nNo; //o anterior do head recebe o novo no
                 Count++;
             }
         }
-        public void List()
+        public void list()
         {
-            if (head!.next == head) //se o next do head for igual ao head/null, esta vazio a lista
+            if (head!.Next == head) //se o Next do head for igual ao head/null, esta vazio a lista
             {
                 Console.WriteLine("Lista Vazia");
                 return;
             }
-            Node? atual = head.next;
+            Node? atual = head.Next;
             Console.WriteLine("Lista: Objeto");
             while (atual != head) //enquanto o atual for diferente de head/null, mostra
             {
-                Console.WriteLine($"- \"{atual!.value}\"");
-                atual = atual.next;
+                Console.WriteLine($"- \"{atual!.Value}\"");
+                atual = atual.Next;
             }
             Console.WriteLine($"Total de objetos: {Count}");
         }
         public bool Remove(object obj)
         {
-            Node? atual = head!.next;
+            Node? atual = head!.Next;
             while (atual != head)
             {
-                if (Object.Equals(atual!.value, obj))
+                if (Object.Equals(atual!.Value, obj))
                 {
-                    Node? neighbef = atual.previous;
-                    Node? neighnext = atual.next;
+                    Node? neighbef = atual.Previous;
+                    Node? neigh_next = atual.Next;
 
-                    neighbef!.next = neighnext;// o proximo do deletado vira o proximo do anterior 
-                    neighnext!.previous = neighbef; // o anterior que apontava para o deletado aponta para anterior do deletado 
+                    neighbef!.Next = neigh_next;// o proximo do deletado vira o proximo do anterior 
+                    neigh_next!.Previous = neighbef; // o anterior que apontava para o deletado aponta para anterior do deletado 
 
                     Console.WriteLine($"O objeto; {obj} foi encontrado deletado");
                     Count--;
                     return true;
                 }
-                atual = atual.next;
+                atual = atual.Next;
             }
             Console.WriteLine($"- {obj} não encontrado!");
             return false;
@@ -65,8 +63,8 @@ namespace list
 
         public void Clear()
         {
-            head?.previous = head;
-            head?.next = head;
+            head?.Previous = head;
+            head?.Next = head;
             Count = 0;
         }
     }

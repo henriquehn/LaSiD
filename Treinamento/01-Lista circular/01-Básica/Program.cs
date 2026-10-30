@@ -1,13 +1,13 @@
-using System;
+﻿using System;
 
 
-namespace mainProgram
+namespace List
 {
     class Program
     {
         static void Main()
         {
-            list.CircularList mylist = new list.CircularList();
+            List.CircularList mylist = new List.CircularList();
             string[] options = { "0.Exit", "1.List", "2.Add", "3.Remove", "4.Clear" };
             int select = 0;
             Console.CursorVisible = false;
@@ -57,14 +57,14 @@ namespace mainProgram
                             break;
 
                         case 1:
-                            mylist.List();
+                            mylist.list();
                             Console.WriteLine("Pressione <Enter> para sair");
                             Console.ReadKey();
                             continue;
                         case 2:
                             Console.WriteLine("Digite:");
-                            object? entry = Console.ReadLine();
-                            while (entry == null || entry == (object)"")
+                            string? entry = Console.ReadLine();
+                            while (string.IsNullOrWhiteSpace(entry))
                             {
                                 Console.WriteLine("Entrada invalida, Digite qualquer coisa:");
                                 entry = Console.ReadLine();
@@ -75,14 +75,21 @@ namespace mainProgram
                             continue;
                         case 3:
                             Console.WriteLine("Digite o objeto a ser deletado:");
-                            object? delete = Console.ReadLine();
-                            while (delete == null || delete == (object)"")
+                            string? delete = Console.ReadLine();
+                            while (string.IsNullOrWhiteSpace(delete))
                             {
                                 Console.WriteLine("Entrada invalida, Digite uma entrada valida:");
                                 delete = Console.ReadLine();
                             }
-                            mylist.Remove(delete!);
                             Console.WriteLine("Pressione <Enter> para confirmar");
+                            Console.ReadKey();
+                            if (mylist.Remove(delete!))
+                            {
+                                Console.WriteLine("Objeto deletado com sucesso!");
+                            } else
+                            {
+                                Console.WriteLine("Objeto não encontrado!");
+                            }
                             Console.ReadKey();
                             continue;
                         case 4:
